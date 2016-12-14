@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <context:property-placeholder location="classpath:/es-core.properties" file-encoding="UTF-8"/>
+    <dubbo:application name="zxd-mgt"/>
+    <dubbo:registry id="registry" address="${zookeeper.registry}"/>
+    <dubbo:protocol name="dubbo" port="20881"/>
+    <dubbo:consumer check="false" timeout="10000"/>
+    <!--crm-->
+    <dubbo:reference id="dubboCustomerBusiness" interface="com.zhixindu.crm.facade.business.DubboCustomerBusiness"/>
+    <dubbo:reference id="dubboCompanyBusiness" interface="com.zhixindu.crm.facade.business.DubboCompanyBusiness"/>
+    <dubbo:reference id="dubboProductBusiness" interface="com.zhixindu.crm.facade.business.DubboProductBusiness"/>
+    <dubbo:reference id="dubboMsgBusiness" interface="com.zhixindu.crm.facade.business.DubboMsgBusiness"/>
+    <dubbo:reference id="dubboDictionaryBusiness" interface="com.zhixindu.crm.facade.business.DubboDictionaryBusiness"/>
+    <dubbo:reference id="dubboNotification" interface="com.zhixindu.crm.facade.business.DubboNotificationBusiness"/>
+    <dubbo:reference id="dubboHelpCenterBusiness" interface="com.zhixindu.crm.facade.business.DubboHelpCenterBusiness"/>
+    <!--account-->
+    <dubbo:reference id="dubboOrderBusiness" interface="com.zhixindu.accounting.facade.business.DubboOrderBusiness"/>
+    <dubbo:reference id="dubboAccountBusiness" interface="com.zhixindu.accounting.facade.business.DubboAccountBusiness"/>
+    <!--watson-->
+    <dubbo:reference id="dubboInquiryBusiness" interface="com.zhixindu.watson.facade.business.DubboInquiryBusiness"/>
+    <dubbo:reference id="dubboInputFieldsBusiness" interface="com.zhixindu.watson.facade.business.DubboInputFieldsBusiness"/>
+    <dubbo:reference id="dubboAPIConfBusiness" interface="com.zhixindu.watson.facade.business.DubboAPIConfBusiness"/>
+    <dubbo:reference id="dubboWatsonProductBusiness" interface="com.zhixindu.watson.facade.business.DubboWatsonProductBusiness"/>
+    <dubbo:reference id="dubboProductFieldsBusiness" interface="com.zhixindu.watson.facade.business.DubboProductFieldsBusiness"/>
+    <dubbo:reference id="dubboApiFieldsBusiness" interface="com.zhixindu.watson.facade.business.DubboApiFieldsBusiness"/>
+    <dubbo:reference id="dubboOrgBusiness" interface="com.zhixindu.watson.facade.business.DubboOrgBusiness"/>
+    <dubbo:reference id="dubboBatchTaskBusiness" interface="com.zhixindu.watson.facade.business.DubboBatchTaskBusiness"/>
+    <dubbo:reference id="DubboReportBusiness" interface="com.zhixindu.watson.facade.business.DubboReportBusiness"/>
+    <!--agent-->
+    <dubbo:reference id="dubboAgentTransferWechatBusiness" interface="com.zhixindu.agent.facade.business.DubboAgentTransferWechatBusiness"/>
+    <!--activity-->
+    <dubbo:reference id="dubboPromotionBusinessByActivity" interface="com.zhixindu.activity.facade.business.DubboPromotionBusiness"/>
+    <dubbo:reference id="dubboActivityBusiness" interface="com.zhixindu.activity.facade.business.DubboActivityBusiness"/>
+    <dubbo:reference id="dubboActivityReleaseBusiness" interface="com.zhixindu.activity.facade.business.DubboActivityReleaseBusiness"/>
+    <!--misc-->
+    <dubbo:reference id="dubboMiscBizCardMgtBusiness" interface="com.zhixindu.misc.facade.bizcard.business.DubboMiscBizCardMgtBusiness"/>
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my-es.iml" filepath="$PROJECT_DIR$/.idea/modules/my-es.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my-es-core/my-es-core.iml" filepath="$PROJECT_DIR$/.idea/modules/my-es-core/my-es-core.iml" group="my-es-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my-es-core/my-es-core_main.iml" filepath="$PROJECT_DIR$/.idea/modules/my-es-core/my-es-core_main.iml" group="my-es-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my-es-core/my-es-core_test.iml" filepath="$PROJECT_DIR$/.idea/modules/my-es-core/my-es-core_test.iml" group="my-es-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my-es_main.iml" filepath="$PROJECT_DIR$/.idea/modules/my-es_main.iml" group="my-es" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my-es_test.iml" filepath="$PROJECT_DIR$/.idea/modules/my-es_test.iml" group="my-es" />
+    </modules>
+  </component>
+</project>
