@@ -7,7 +7,6 @@ apply plugin: 'war'
 sourceCompatibility = 1.7
 
 repositories {
-    maven { url "http://99.48.18.230:8081/repository/zxd-groups/"}
     maven { url "http://www.mvnrepository.com/" }
     mavenCentral()
     maven { url "http://search.maven.org/#browse" }
