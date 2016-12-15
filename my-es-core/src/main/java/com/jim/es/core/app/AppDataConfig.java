@@ -23,6 +23,11 @@ import java.beans.PropertyVetoException;
 @MapperScan("com.jim.es.core.mapper")
 @EnableTransactionManagement
 public class AppDataConfig {
+    /**
+     * 数据库参数本应写在文件中注入的，不知何种原因总是注入失败，暂时先直接写入
+     * @return
+     * @throws PropertyVetoException
+     */
     @Bean
     public DataSource dataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();

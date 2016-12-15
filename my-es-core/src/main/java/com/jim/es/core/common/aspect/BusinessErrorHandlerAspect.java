@@ -27,18 +27,4 @@ public class BusinessErrorHandlerAspect {
         String name = joinPoint.getSignature().getDeclaringType().getSimpleName();
         LOGGER.error(name,ex);
     }
-
-/*    public void afterThrowing(JoinPoint joinPoint, Throwable e){
-        Class<? extends Throwable> errorClass = e.getClass();
-        ErrorHandler errorHandler = Busine ssErrorHandlerFactory.INSTANCE.get(errorClass);
-        if (errorHandler != null){
-            Signature signature = joinPoint.getSignature();
-            String name = signature.getDeclaringType().getSimpleName();
-            String method = signature.getName();
-            Object[] args = joinPoint.getArgs();
-            errorHandler.handle(name, method, args, e);
-        }else if (LOGGER.isInfoEnabled()){
-            LOGGER.info("businessErrorHandle for [{}] is null", errorClass.getName());
-        }
-    }*/
 }

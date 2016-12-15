@@ -29,4 +29,8 @@ public interface UserMapper {
     @Insert("INSERT INTO USER(no,username,password,mobile,email,first_login_time,login_time,create_time,delete_flag)\n" +
             "VALUES(#{param.no},#{param.name},#{param.password},#{param.mobile},#{param.email},#{param.first_login_time},#{param.login_time},#{param.create_time},#{param.delete_flag})")
     void addUser(@Param("param") UserDto userDto);
+
+    @Select("select * from user where username = #{param.name}")
+    @ResultType(UserInfo.class)
+    UserInfo getSingleUserInfo(@Param("param") UserDto userDto);
 }

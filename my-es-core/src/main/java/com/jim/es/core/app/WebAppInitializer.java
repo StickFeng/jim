@@ -1,6 +1,7 @@
 
 package com.jim.es.core.app;
 
+import com.jim.es.core.common.filter.EsSessionFilter;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -23,8 +24,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
         // Create the 'root' Spring application context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register(WebAppConfig.class); // AppDataConfig.class
-//        XmlWebApplicationContext xmlWebApplicationContext = new XmlWebApplicationContext();
-//        xmlWebApplicationContext.setConfigLocation("classpath*:spring-*.xml");
 
         // Classloader回收防止内存泄露，必须第一个
         container.addListener(new IntrospectorCleanupListener());
@@ -35,13 +34,10 @@ public class WebAppInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext dispatcherServlet = new AnnotationConfigWebApplicationContext();
         dispatcherServlet.register(WebMvcConfig.class);
 
-//        rootContext.getEnvironment().setActiveProfiles("openshift");
-
         // Register and map the dispatcher servlet
         ServletRegistration.Dynamic dispatcher = container.addServlet("es", new DispatcherServlet(dispatcherServlet));
         dispatcher.setLoadOnStartup(1);
         dispatcher.setAsyncSupported(true);
-//        dispatcher.addMapping("/");
         dispatcher.addMapping("/api/*");
         registerFilter(container);
     }
@@ -50,12 +46,8 @@ public class WebAppInitializer implements WebApplicationInitializer {
         CharacterEncodingFilter cef = new CharacterEncodingFilter();
         cef.setForceEncoding(true);
         cef.setEncoding("UTF-8");
-//        context.addFilter("ipFilter",new IpFilter()).addMappingForUrlPatterns(null,true,"/*");
         context.addFilter("encodingFilter", cef).addMappingForUrlPatterns(null ,true, "/*");
-        //context.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
-
-//        context.addFilter("IpFilter", IpFilter.class).addMappingForUrlPatterns(null,true,"/*");
-       // context.addFilter("esSessionFilter", MgtSessionFilter.class).addMappingForUrlPatterns(null,true,"/*");
+        context.addFilter("esSessionFilter", EsSessionFilter.class).addMappingForUrlPatterns(null,true,"/*");
     }
 
 }
