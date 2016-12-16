@@ -1,3 +1,4 @@
 rootProject.name = 'my-es'
 include 'my-es-core'
+include 'my-es-support'
 
