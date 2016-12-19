@@ -28,4 +28,14 @@ public class BusinessOptionHandlerAspect {
         Object[] objects = joinPoint.getArgs();
         LOGGER.info("before :: {}.{} ===>>>{}", name, method, JSON.toJSON(objects));
     }
+
+    @After("query()")
+    public void afterOption(){}
+
+    @AfterReturning(pointcut = "query()" ,returning = "result")
+    public void afterReturnOption(JoinPoint joinPoint, Object result){
+        String name = joinPoint.getSignature().getDeclaringType().getSimpleName();
+        String method = joinPoint.getSignature().getName();
+
+    }
 }
